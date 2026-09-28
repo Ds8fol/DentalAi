@@ -7,11 +7,7 @@ const chatInput = document.getElementById("chatInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
 
-
-// =========================
-// ЗАГРУЗКА ИЗОБРАЖЕНИЯ
-// =========================
-
+// Загрузка изображения
 uploadBtn.addEventListener("click", function () {
   fileInput.click();
 });
@@ -30,17 +26,9 @@ fileInput.addEventListener("change", function () {
     resultContent.innerHTML = `
       <div style="text-align:left">
         <h3>Изображение загружено ✅</h3>
-        <p>
-          Файл успешно получен.
-          DentalAI сейчас работает в демонстрационном режиме.
-        </p>
-        <p>
-          Изображение подготовлено для будущего анализа
-          с помощью модели компьютерного зрения.
-        </p>
-        <p>
-          ⚠️ Результат не является медицинским диагнозом.
-        </p>
+        <p>Файл успешно получен.</p>
+        <p>DentalAI работает в демонстрационном режиме.</p>
+        <p>⚠️ Результат не является медицинским диагнозом.</p>
       </div>
     `;
   };
@@ -48,33 +36,29 @@ fileInput.addEventListener("change", function () {
   reader.readAsDataURL(file);
 });
 
-
-// =========================
-// ДЕМОНСТРАЦИОННЫЙ ЧАТ
-// =========================
-
+// Чат
 function sendMessage() {
   const text = chatInput.value.trim();
 
-  if (!text) return;
+  if (text === "") {
+    return;
+  }
 
-  messages.innerHTML += `
-    <div class="message user">
-      ${text}
-    </div>
-  `;
+  const userMessage = document.createElement("div");
+  userMessage.className = "message user";
+  userMessage.textContent = text;
+
+  messages.appendChild(userMessage);
 
   chatInput.value = "";
 
   setTimeout(function () {
-    messages.innerHTML += `
-      <div class="message ai">
-        Спасибо за вопрос! Сейчас я работаю в демонстрационном режиме.
-        В следующей версии сюда можно подключить настоящую AI-модель.
-        Для медицинских вопросов результаты должны проверяться
-        квалифицированным стоматологом.
-      </div>
-    `;
+    const aiMessage = document.createElement("div");
+    aiMessage.className = "message ai";
+    aiMessage.textContent =
+      "Спасибо за вопрос! Я пока работаю в демонстрационном режиме. В будущей версии сюда можно подключить настоящую AI-модель.";
+
+    messages.appendChild(aiMessage);
 
     messages.scrollTop = messages.scrollHeight;
   }, 500);
