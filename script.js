@@ -7,7 +7,11 @@ const chatInput = document.getElementById("chatInput");
 const sendBtn = document.getElementById("sendBtn");
 const messages = document.getElementById("messages");
 
-// Загрузка изображения
+
+// =========================
+// ЗАГРУЗКА ИЗОБРАЖЕНИЯ
+// =========================
+
 uploadBtn.addEventListener("click", function () {
   fileInput.click();
 });
@@ -36,13 +40,15 @@ fileInput.addEventListener("change", function () {
   reader.readAsDataURL(file);
 });
 
-// Чат
+
+// =========================
+// ДЕМОНСТРАЦИОННЫЙ AI-ЧАТ
+// =========================
+
 function sendMessage() {
   const text = chatInput.value.trim();
 
-  if (text === "") {
-    return;
-  }
+  if (!text) return;
 
   const userMessage = document.createElement("div");
   userMessage.className = "message user";
@@ -53,21 +59,34 @@ function sendMessage() {
   chatInput.value = "";
 
   setTimeout(function () {
-    const aiMessage = document.createElement("div");
-    aiMessage.className = "message ai";
-    aiMessage.textContent =
-      "Спасибо за вопрос! Я пока работаю в демонстрационном режиме. В будущей версии сюда можно подключить настоящую AI-модель.";
 
-    messages.appendChild(aiMessage);
+    const question = text.toLowerCase();
 
-    messages.scrollTop = messages.scrollHeight;
-  }, 500);
-}
+    let answer;
 
-sendBtn.addEventListener("click", sendMessage);
 
-chatInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-});
+    if (question.includes("кариес")) {
+
+      answer =
+        "Кариес — это повреждение твёрдых тканей зуба. Он связан с воздействием кислот, которые образуются бактериями зубного налёта. При подозрении на кариес стоит обратиться к стоматологу.";
+
+    } else if (
+      question.includes("болит зуб") ||
+      question.includes("зуб болит") ||
+      question.includes("зубная боль")
+    ) {
+
+      answer =
+        "Зубная боль может иметь разные причины, включая кариес, воспаление или травму. По переписке определить причину нельзя, поэтому при боли рекомендуется обратиться к стоматологу.";
+
+    } else if (
+      question.includes("чистить зуб") ||
+      question.includes("чистка зуб") ||
+      question.includes("щетка")
+    ) {
+
+      answer =
+        "Обычно рекомендуют чистить зубы два раза в день фторсодержащей зубной пастой. Также важно очищать промежутки между зубами. Индивидуальные рекомендации может дать стоматолог.";
+
+    } else if (
+      question.includes("кровоточ") ||
