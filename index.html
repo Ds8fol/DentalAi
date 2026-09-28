@@ -6,97 +6,235 @@
   <title>DentalAI — ИИ для стоматологии</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="nav">
-    <div class="brand"><span class="logo">🦷</span><div><b>DentalAI</b><small>ИИ для современной стоматологии</small></div></div>
-    <nav>
-      <a href="#home">Главная</a>
-      <a href="#analysis">Анализ</a>
-      <a href="#chat">Чат</a>
-      <a href="#research">Научная база</a>
-    </nav>
-  </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-text">
-        <span class="badge">AI • DENTISTRY • RESEARCH</span>
-        <h1>Интеллектуальный помощник для стоматологии</h1>
-        <p>Демонстрационный прототип для анализа стоматологических изображений и работы с научной информацией.</p>
-        <a class="button" href="#analysis">Начать анализ →</a>
+<header class="nav">
+  <div class="brand">
+    <span class="logo">🦷</span>
+    <div>
+      <b>DentalAI</b>
+      <small>ИИ для современной стоматологии</small>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#home">Главная</a>
+    <a href="#analysis">Анализ</a>
+    <a href="#chat">Чат</a>
+    <a href="#research">Научная база</a>
+  </nav>
+</header>
+
+
+<main>
+
+<section id="home" class="hero">
+  <div class="hero-text">
+    <span class="badge">AI • DENTISTRY • RESEARCH</span>
+
+    <h1>Интеллектуальный помощник для стоматологии</h1>
+
+    <p>
+      Демонстрационный исследовательский прототип
+      для анализа стоматологических изображений
+      и работы с научной информацией.
+    </p>
+
+    <a class="button" href="#analysis">
+      Начать анализ →
+    </a>
+  </div>
+
+  <div class="hero-tooth">🦷</div>
+</section>
+
+
+<section class="features">
+
+  <div>
+    <span>🔍</span>
+    <b>Анализ изображений</b>
+    <small>Рентген, фото и другие изображения</small>
+  </div>
+
+  <div>
+    <span>🤖</span>
+    <b>ИИ-помощник</b>
+    <small>Ответы на стоматологические вопросы</small>
+  </div>
+
+  <div>
+    <span>📚</span>
+    <b>Научная база</b>
+    <small>Научные публикации и исследования</small>
+  </div>
+
+</section>
+
+
+<section id="analysis" class="section">
+
+  <div class="section-title">
+    <span class="badge">01 / ANALYSIS</span>
+
+    <h2>Анализ изображения</h2>
+
+    <p>
+      Загрузите изображение. Сейчас это безопасный
+      демонстрационный режим — настоящую диагностическую
+      модель можно подключить позже.
+    </p>
+  </div>
+
+
+  <div class="analysis-grid">
+
+    <div class="upload-card" id="dropZone">
+
+      <div class="upload-icon">↑</div>
+
+      <h3>Загрузить снимок</h3>
+
+      <p>PNG, JPG или JPEG</p>
+
+      <input
+        id="fileInput"
+        type="file"
+        accept="image/png,image/jpeg"
+        hidden
+      >
+
+      <button class="button" id="uploadBtn">
+        Выбрать файл
+      </button>
+
+      <div id="fileName" class="file-name"></div>
+
+      <img
+        id="preview"
+        alt="Предпросмотр"
+        class="preview hidden"
+      >
+
+    </div>
+
+
+    <div class="result-card">
+
+      <div class="result-head">
+        <h3>Результат</h3>
+        <span class="status">ДЕМО-РЕЖИМ</span>
       </div>
-      <div class="hero-tooth">🦷</div>
-    </section>
 
-    <section class="features">
-      <div><span>🔍</span><b>Анализ изображений</b><small>Рентген, фото и другие изображения</small></div>
-      <div><span>🤖</span><b>ИИ-помощник</b><small>Объяснение результатов простым языком</small></div>
-      <div><span>📚</span><b>Научная база</b><small>Источники и исследования</small></div>
-    </section>
+      <div id="resultContent" class="result-placeholder">
 
-    <section id="analysis" class="section">
-      <div class="section-title">
-        <span class="badge">01 / ANALYSIS</span>
-        <h2>Анализ изображения</h2>
-        <p>Загрузите изображение. На этом этапе это безопасный демонстрационный режим — настоящую диагностическую модель подключим позже.</p>
+        <span>🧠</span>
+
+        <p>
+          После загрузки изображения здесь появится
+          интерфейс результата анализа.
+        </p>
+
       </div>
 
-      <div class="analysis-grid">
-        <div class="upload-card" id="dropZone">
-          <div class="upload-icon">↑</div>
-          <h3>Загрузить снимок</h3>
-          <p>PNG, JPG или JPEG</p>
-          <input id="fileInput" type="file" accept="image/png,image/jpeg" hidden>
-          <button class="button" id="uploadBtn">Выбрать файл</button>
-          <div id="fileName" class="file-name"></div>
-          <img id="preview" alt="Предпросмотр" class="preview hidden">
-        </div>
+    </div>
 
-        <div class="result-card">
-          <div class="result-head"><h3>Результат</h3><span class="status">ДЕМО-РЕЖИМ</span></div>
-          <div id="resultContent" class="result-placeholder">
-            <span>🧠</span>
-            <p>После загрузки изображения здесь появится интерфейс результата анализа.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  </div>
 
-    <section id="chat" class="section">
-      <div class="section-title">
-        <span class="badge">02 / AI CHAT</span>
-        <h2>Чат с ИИ</h2>
-        <p>Пока работает как демонстрационный интерфейс. Подключение реальной модели — следующий этап.</p>
-      </div>
-      <div class="chat-card">
-        <div class="messages" id="messages">
-          <div class="message ai">Здравствуйте! Я DentalAI. Задайте вопрос о стоматологии.</div>
-        </div>
-        <div class="chat-input">
-          <input id="chatInput" placeholder="Например: что такое кариес?">
-          <button id="sendBtn">Отправить</button>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <section id="research" class="section">
-      <div class="section-title">
-        <span class="badge">03 / RESEARCH</span>
-        <h2>Научная база</h2>
-      </div>
-      <div class="research-grid">
-        <article><span>📄</span><h3>ИИ в стоматологии</h3><p>Обзоры современных применений искусственного интеллекта.</p></article>
-        <article><span>🦷</span><h3>Диагностика кариеса</h3><p>Исследования алгоритмов анализа стоматологических изображений.</p></article>
-        <article><span>🔬</span><h3>Критический анализ</h3><p>Ограничения, качество данных и клиническая валидация.</p></article>
-      </div>
-    </section>
-  </main>
 
-  <footer>
-    <b>DentalAI</b>
-    <span>Учебный/исследовательский прототип. Не является медицинским диагностическим устройством.</span>
-  </footer>
+<section id="chat" class="section">
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <div class="section-title">
+
+    <span class="badge">02 / AI CHAT</span>
+
+    <h2>Чат с ИИ</h2>
+
+    <p>
+      Демонстрационный стоматологический помощник.
+      Он отвечает на распространённые вопросы
+      о здоровье полости рта.
+    </p>
+
+  </div>
+
+
+  <div class="chat-card">
+
+    <div class="messages" id="messages">
+
+      <div class="message ai">
+        Здравствуйте! Я DentalAI.
+        Задайте вопрос о стоматологии.
+      </div>
+
+    </div>
+
+
+    <div class="chat-input">
+
+      <input
+        id="chatInput"
+        placeholder="Например: что такое кариес?"
+      >
+
+      <button id="sendBtn">
+        Отправить
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="research" class="section">
+
+  <div class="section-title">
+
+    <span class="badge">03 / RESEARCH</span>
+
+    <h2>Научная база</h2>
+
+    <p>
+      Подборка научных материалов о применении
+      искусственного интеллекта в стоматологии.
+    </p>
+
+  </div>
+
+
+  <div class="research-grid">
+
+
+    <article>
+
+      <span>🧠</span>
+
+      <h3>ИИ и диагностика кариеса</h3>
+
+      <p>
+        Научные исследования изучают применение
+        искусственного интеллекта для обнаружения
+        кариеса.
+      </p>
+
+      <small>
+        Научный обзор, 2024
+      </small>
+
+      <a
+        href="https://pubmed.ncbi.nlm.nih.gov/39206581/"
+        target="_blank"
+      >
+        Читать исследование →
+      </a>
+
+    </article>
+
+
+    <article
