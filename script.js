@@ -1,39 +1,40 @@
-
-const imageInput = document.getElementById("imageInput");
+const fileInput = document.getElementById("fileInput");
+const uploadBtn = document.getElementById("uploadBtn");
 const preview = document.getElementById("preview");
-const analyzeBtn = document.getElementById("analyzeBtn");
-const result = document.getElementById("result");
+const resultContent = document.getElementById("resultContent");
 
-imageInput.addEventListener("change", function () {
-  const file = imageInput.files[0];
+uploadBtn.addEventListener("click", function () {
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", function () {
+  const file = fileInput.files[0];
 
   if (!file) return;
 
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = "block";
+  const reader = new FileReader();
 
-  result.innerHTML = `
-    <strong>Изображение загружено ✅</strong>
-    <p>Файл готов к демонстрационному анализу.</p>
-  `;
-});
+  reader.onload = function (event) {
+    preview.src = event.target.result;
+    preview.classList.remove("hidden");
 
-analyzeBtn.addEventListener("click", function () {
-  if (!imageInput.files.length) {
-    result.innerHTML = `
-      <strong>Сначала загрузите изображение.</strong>
+    resultContent.innerHTML = `
+      <div style="text-align:left">
+        <h3>Изображение загружено ✅</h3>
+        <p>
+          Файл успешно получен.
+          Сейчас DentalAI работает в демонстрационном режиме.
+        </p>
+        <p>
+          В будущей версии здесь будет выполняться анализ
+          изображения с помощью модели компьютерного зрения.
+        </p>
+        <p>
+          ⚠️ Результат не является медицинским диагнозом.
+        </p>
+      </div>
     `;
-    return;
-  }
+  };
 
-  result.innerHTML = `
-    <strong>🔬 Демонстрационный анализ</strong>
-    <p>
-      Изображение получено и подготовлено для анализа.
-    </p>
-    <p>
-      Сейчас это демонстрационный режим.
-      Результат не является медицинским диагнозом.
-    </p>
-  `;
+  reader.readAsDataURL(file);
 });
